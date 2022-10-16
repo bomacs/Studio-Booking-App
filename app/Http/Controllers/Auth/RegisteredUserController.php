@@ -50,6 +50,24 @@ class RegisteredUserController extends Controller
           // Attached roles to the user
         $user->attachRole('user');
 
+        // Create temporary profile
+        $user->userProfile()->updateOrCreate(
+            [
+                'user_id' => $user->id
+            ],
+            [
+                'firstname' => ' ',
+                'lastname' => ' ',
+                'gender' => ' ',
+                'phone_no' => ' ',
+                'address' => ' ',
+                'birthday' =>  date('Y-m-d'),
+                'aboutself' => ' ',
+                'experience' => ' ',
+                'expertise' => ' ',
+                'image_path' => 'defaultpic.jpg',
+            ]);
+
         event(new Registered($user));
 
         Auth::login($user);

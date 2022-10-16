@@ -1,4 +1,7 @@
 <x-app-layout>
+    @if (session('message'))
+    <p class="bg-green-400 text-veryDarkBlue text-md">{{ session('message') }}</p>
+    @endif
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -33,7 +36,7 @@
                 <x-input-label for="description" :value="__('Description')" />
                 <textarea id="description" name="description" rows="4" cols="25" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                 </textarea>
-                <x-input-error :messages="$errors->get('title')" class="mt-2" />
+                <x-input-error :messages="$errors->get('description')" class="mt-2" />
             </div>
 
             <div class="flex items-center justify-end mt-4">

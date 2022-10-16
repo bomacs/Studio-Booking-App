@@ -50,11 +50,27 @@ class RegisteredPhotographerController extends Controller
           // Attached roles to the user
         $user->attachRole('photographer');
 
+        // Create temporary profile
+        $user->userProfile()->updateOrCreate(
+        [
+            'user_id' => $user->id
+        ],
+        [
+            'firstname' => ' ',
+            'lastname' => ' ',
+            'gender' => ' ',
+            'phone_no' => ' ',
+            'address' => ' ',
+            'birthday' =>  date('Y-m-d'),
+            'aboutself' => ' ',
+            'experience' => ' ',
+            'expertise' => ' ',
+            'image_path' => 'defaultpic.jpg',
+        ]);
+
         event(new Registered($user));
 
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME)->with('message', 'Photographer was registered succcesfully');
     }
 }
 

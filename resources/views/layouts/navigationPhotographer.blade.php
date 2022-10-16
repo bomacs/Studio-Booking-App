@@ -48,7 +48,7 @@
                     </x-slot>
                     <x-slot name="content">
                         <!-- Authentication -->
-                        <x-dropdown-link href="#">
+                        <x-dropdown-link href="{{ route('createPhotographerProfile') }}">
                             {{ __('Edit Profile') }}
                         </x-dropdown-link>
                         <form method="POST" action="{{ route('logout') }}">
@@ -103,7 +103,7 @@
                 <x-responsive-nav-link>
                     {{ Auth::user()->username }}</div>
                 </x-responsive-nav-link>
-                <x-responsive-nav-link href="#">
+                <x-responsive-nav-link href="{{route('createPhotographerProfile')}}">
                     {{ __('Edit Profile') }}</div>
                 </x-responsive-nav-link>
                 <form method="POST" action="{{ route('logout') }}">

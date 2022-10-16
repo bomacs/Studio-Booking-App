@@ -58,6 +58,7 @@
                         <a href="{{ route('termsAndConditions') }}" class="text-sm text-blue-600 hover:underline">Terms and Conditions</a>
                     </span>
                 </label>
+                <x-input-error :messages="$errors->get('terms_conditions')" class="mt-2" />
             </div>
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">

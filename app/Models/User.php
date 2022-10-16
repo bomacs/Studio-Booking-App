@@ -49,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Package::class);
     }
+
+    public function userProfile() 
+    {
+        return $this->hasOne(UserProfile::class, 'user_id', 'id');
+    }
 }

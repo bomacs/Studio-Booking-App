@@ -22,7 +22,7 @@ class GalleryController extends Controller
             'image' => 'required|mimes:jpg,png,jpeg|max:5048',
         ]);
         $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
-        $test = $request->file('image')->move(public_path('imgs\gallery'), $newImageName);
+        $request->file('image')->move(public_path('imgs\gallery'), $newImageName);
 
         Gallery::create([
             'title' => $request->input('title'),
