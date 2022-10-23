@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserProfile;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -68,7 +69,6 @@ class UserController extends Controller
         ]);
 
         if($request->image) {
-
             $newImageName = time() . '-' . auth()->user()->username . '.' . $request->image->extension();
             $request->file('image')->move(public_path('imgs\profile_pic'), $newImageName);
         }else {
@@ -93,12 +93,27 @@ class UserController extends Controller
                 'expertise' => $request->input('expertise'),
                 'image_path' => $newImageName,
             ]);
-        if (auth()->user()->hasRole('user'))
+    
+        if (auth()->user()->hasRole('photographer'))
         {
-            return redirect(route('createUserProfile'))->with('message', 'Image was uploaded successfullly.');
+            return redirect(route('photographer.profile'))->with('message', 'Profile was updated successfullly.');
         } elseif (auth()->user()->hasRole('user'))
         {
-            return redirect(route('createPhotographerProfile'))->with('message', 'Image was uploaded successfullly.');
+            return redirect(route('user.profile'))->with('message', 'Profile was updated successfullly.');
+        }
+    }
+
+    public function showProfile($id)
+    { 
+        $user = User::findOrFail($id);
+
+        if($user->hasRole('photographer')){
+            return view('common.showProfile', [
+                'user' =>  $user 
+             ]) ;
+        }else
+        {
+            return abort(404);
         }
     }
 }

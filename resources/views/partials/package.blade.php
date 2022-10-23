@@ -3,9 +3,9 @@
     @foreach ($packages as $package)  
     <div class="lg:w-1/3 md:w-1/2 w-full p-2">
         <div class="mx-auto p-8 rounded-xl border border-gray-200 bg-white shadow-md shadow-brightRedLight">
-            <h4 class="text-3xl font-semibold text-center text-veryDarkBlue py-4"> {{ $package->name }} </h4>
+            <h4 class="text-2xl font-semibold text-center text-veryDarkBlue py-4"> {{ $package->name }} </h4>
             <hr>
-            <h5 class="text-4xl text-center font-bold py-4 text-gray-500">Php {{ $package->price }}</h5>
+            <h5 class="text-2xl text-center font-bold py-4 text-gray-500">Php {{ $package->price }}</h5>
             <hr>
             @foreach ($package->includes as $includes)
             <div class="text-xs my-4 flex flex-col items-center space-y-8">
@@ -15,7 +15,9 @@
                 </p>
             </div>
             @endforeach
-            <button class="font-semibold my-4 px-4 py-4 block w-full text-white bg-brightRed hover:bg-brightRedSupLight rounded"> Select </button>
+            @role('user')
+            <a href="user/package/{{$package->id}}/book" class="font-semibold my-4 px-4 py-4 block w-full text-white bg-brightRed hover:bg-brightRedSupLight rounded"> Select </a>
+            @endrole
         </div>
     </div>
     @endforeach

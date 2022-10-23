@@ -24,10 +24,10 @@
             <x-nav-link :href="route('user.profile')" :active="request()->routeIs('user.profile')">
                 {{ __('Profile') }}
             </x-nav-link>
-            <x-nav-link href="#">
+            <x-nav-link href="{{route('create.booking')}}" :active="request()->routeIs('create.booking')">
                 {{ __('Book Now') }}
             </x-nav-link>
-            <x-nav-link href="#">
+            <x-nav-link href="{{route('my_bookings')}}">
                 {{ __('My Bookings') }}
             </x-nav-link>
         </div>
@@ -94,10 +94,10 @@
             <x-responsive-nav-link href="{{route('user.profile')}}">
                 {{ __('Profile') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="#">
+            <x-responsive-nav-link href="{{route('create.booking')}}">
                 {{ __('Book Now') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="#">
+            <x-responsive-nav-link href="{{route('my_bookings')}}">
                 {{ __('My Bookings') }}
             </x-responsive-nav-link>
         </div>

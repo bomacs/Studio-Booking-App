@@ -1,11 +1,13 @@
 <?php
 
+use App\Models\User;
 use App\Models\Gallery;
 use App\Models\Package;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\admin\GalleryController;
@@ -27,7 +29,8 @@ use App\Http\Controllers\admin\PackageController;
 Route::get('/', function () {
     return view('home', [
         'galleryImages' => Gallery::all(),
-        'packages' => Package::all()
+        'photographers' => User::whereRoleIs('photographer')->get(),
+        'packages' => Package::all(),
     ]);
 })->name('home');
 
@@ -39,25 +42,42 @@ Route::get('policies', function() {
 // Admin
 Route::group(['prefix' => 'admin', 'middleware' => ['role:administrator','auth', 'verified']], function () {
     Route::get('/dashboard',[DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('gallery/create', [GalleryController::class, 'create'])->name('create.gallery');
+    Route::post('gallery/create', [GalleryController::class, 'store']);
+    Route::get('package/create', [PackageController::class, 'create'])->name('create.package');
+    Route::post('package/create', [PackageController::class, 'store']);
 });
 
 // Photographer Only
 Route::group(['prefix' => 'photographer', 'middleware' => ['role:photographer','auth', 'verified']], function () {
     Route::get('/profile/create',  [UserController::class, 'createProfile'])->name('createPhotographerProfile');
-    Route::post('/profile/update',  [UserController::class, 'updateProfile'])->name('updatePhotographerProfile');
+    Route::post('/profile/create',  [UserController::class, 'updateProfile']);
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('photographer.dashboard');
 });
 
 // User only
 Route::group(['prefix' => 'user', 'middleware' =>['role:user','auth', 'verified']], function () {
     Route::get('/profile/create',  [UserController::class, 'createProfile'])->name('createUserProfile');
-    Route::post('/profile/update',  [UserController::class, 'updateProfile'])->name('updateUserProfile');
+    Route::post('/profile/create',  [UserController::class, 'updateProfile']);
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
+    // Bookings Route
+    Route::get('/bookings/create', [BookingController::class, 'create'])->name('create.booking');
+    Route::post('/bookings/create', [BookingController::class, 'store']);
+    Route::get('/my_bookings', [BookingController::class, 'showUserBookings'])->name('my_bookings');
+    Route::get('/package/{id}/book', [BookingController::class, 'bookPackage'])->name('book.package');
+    Route::post('/package/{id}/book', [BookingController::class, 'store']);
+});
+
+// No need to prefix
+Route::group(['middleware' =>['role:user','auth', 'verified']], function () {
+    Route::get('/photographer/{id}/create', [BookingController::class, 'bookPhotographer'])->name('book.photographer');
+    Route::post('/photographer/{id}/create', [BookingController::class, 'store']);
 });
 
 // Photographer and user @auth
 Route::group(['prefix' => 'photographer', 'middleware' => ['auth', 'verified']], function () {
     Route::get('/profile', [UserController::class, 'indexProfile'])->name('photographer.profile');
+    Route::get('/{id}' , [UserController::class, 'showProfile']);
 });
 
 // User and Photographer @auth
@@ -66,12 +86,8 @@ Route::group(['prefix' => 'user', 'middleware' =>['auth', 'verified']], function
 });
 
 
-// for admin
-Route::get('gallery/create', [GalleryController::class, 'create'])->name('create.gallery');
-Route::post('gallery/create', [GalleryController::class, 'store']);
 
-Route::get('package/create', [PackageController::class, 'create'])->name('create.package');
-Route::post('package/create', [PackageController::class, 'store']);
+
 
 
 require __DIR__.'/auth.php';

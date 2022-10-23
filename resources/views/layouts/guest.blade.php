@@ -14,8 +14,6 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-veryDarkBlue antialiased">
-        @include('layouts.guestNav')
-
         <div class="container mx-auto ">
             {{ $slot }}
         </div>

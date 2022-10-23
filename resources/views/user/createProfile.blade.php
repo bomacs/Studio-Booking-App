@@ -9,7 +9,7 @@
     </x-slot>
     <section id="profile" class="mb-24">
         <div class="container mx-auto my-5 p-5">
-            <form method="POST" action="{{ route('updateUserProfile') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('createUserProfile') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="md:flex md:flex-col no-wrap md:-mx-2 ">
                     <!-- Left Side -->
@@ -93,10 +93,10 @@
                                     <div class="grid grid-cols-2 md:-space-x-4 mt-2">
                                         <x-input-label for="gender" class="px-4 py-2 font-semibold" :value="__('Gender')" />
 
-                                        <select name="gender" id="gender" value="{{ $userProfile->userProfile->gender }}" class="text-sm block mt-1 w-full border-dgrey focus:border-indigo-300 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                                        <select name="gender" id="gender" class="text-sm block mt-1 w-full border-dgrey focus:border-indigo-300 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                                             <option value="" selected disabled>Select Gender..</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
+                                            <option value="Male" {{ old('gender') == "Male" ? 'selected' : ' '}}>Male</option>
+                                            <option value="Female" {{ old('gender') == "Female" ? 'selected' : ' '}}>Female</option>
                                         </select> 
                         
                                         <x-input-error :messages="$errors->get('gender')" class="mt-2" />
@@ -135,7 +135,6 @@
                                             {{ __('Save') }}
                                         </x-primary-button>
                                     </div>
-                             
                                 </div>
                             </div>
                         </div>

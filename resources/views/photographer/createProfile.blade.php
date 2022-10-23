@@ -9,7 +9,7 @@
     </x-slot>
     <section id="profile" class="mb-24">
         <div class="container mx-auto my-5 p-5">
-            <form method="POST" action="{{ route('updatePhotographerProfile') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('createPhotographerProfile') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="md:flex md:flex-col no-wrap md:-mx-2 ">
                     <!-- Left Side -->

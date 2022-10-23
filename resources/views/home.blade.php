@@ -181,7 +181,7 @@
                         Hurry!, sign-up now and book the photographer you want for your special events.
                     </p>
                     <div class="flex justify-center md:justify-start">
-                        <a href="#" class="font-bold p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight hover:text-veryDarkBlue">Book Now</a>
+                        <a href="{{route('create.booking')}}" class="font-bold p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight hover:text-veryDarkBlue">Book Now</a>
                     </div>  
                 </div>
                 <div class="flex justify-center md:w-1/2">
@@ -272,7 +272,13 @@
         </section>
         <!-- Gallery -->
         <section id="gallery">
-            @include('partials.gallery')
+            <div class="max-w-6xl px-5 mx-auto mb-20 text-center md:mb-32">
+                <!--heading-->
+                <h2 class="text-4xl font-bold text-center">
+                    Explore the beauty of our works 
+                </h2>
+                @include('partials.gallery')
+            </div>
         </section>
         <!-- Phototgraphers Section -->
         <section id="team">
@@ -281,56 +287,7 @@
                 <h2 class="text-4xl font-bold text-center">
                     Choose your best photographer from our team
                 </h2>
-                <div class="container grid grid-cols-1 gap-2 mt-20 mx-auto px-2 md:grid-cols-3">
-                    <div class="max-w-sm rounded-lg shadow-md shadow-brightRedLight">
-                        <img
-                          class="object-cover w-full h-80"
-                          src="https://cdn.pixabay.com/photo/2016/12/19/18/21/snowflake-1918794__340.jpg"
-                          alt="image"
-                        />
-                        <div class="px-6 py-4">
-                          <h4 class="mb-3 text-xl font-semibold tracking-tight text-brightRed">
-                            Christmas Tree Decoration
-                          </h4>
-                          <button
-                            class="px-4 py-2 text-sm shadow  rounded-md bg-brightRed shadow-brightRedLight text-white hover:bg-brightRedLight hover:text-veryDarkBlue">
-                            Read more
-                          </button>
-                        </div>
-                    </div>
-                    <div class="max-w-sm rounded-lg shadow-md shadow-brightRedLight">
-                        <img
-                          class="object-cover w-full h-80"
-                          src="https://cdn.pixabay.com/photo/2016/12/19/18/21/snowflake-1918794__340.jpg"
-                          alt="image"
-                        />
-                        <div class="px-6 py-4">
-                          <h4 class="mb-3 text-xl font-semibold tracking-tight text-brightRed">
-                            Christmas Tree Decoration
-                          </h4>
-                          <button
-                            class="px-4 py-2 text-sm shadow  rounded-md bg-brightRed shadow-brightRedLight text-white hover:bg-brightRedLight hover:text-veryDarkBlue">
-                            Read more
-                          </button>
-                        </div>
-                    </div>
-                    <div class="max-w-sm rounded-lg shadow-md shadow-brightRedLight">
-                        <img
-                          class="object-cover w-full h-80"
-                          src="https://cdn.pixabay.com/photo/2016/12/19/18/21/snowflake-1918794__340.jpg"
-                          alt="image"
-                        />
-                        <div class="px-6 py-4">
-                          <h4 class="mb-3 text-xl font-semibold tracking-tight text-brightRed">
-                            Christmas Tree Decoration
-                          </h4>
-                          <button
-                            class="px-4 py-2 text-sm shadow rounded-md bg-brightRed shadow-brightRedLight text-white hover:bg-brightRedLight hover:text-veryDarkBlue">
-                            Read more
-                          </button>
-                        </div>
-                    </div>
-                </div>
+                @include('partials.team')
             </div>
         </section>
         <!-- Packages -->
@@ -389,7 +346,7 @@
                     Make your occasions memorable as it is covered by talented photographers that we have. 
                 </h2>
                 <div class="flex justify-center md:justify-start">
-                    <a href="#" class="font-bold p-3 px-6 pt-2 text-brightRed bg-white rounded-full baseline hover:bg-veryDarkBlue">Book Now</a>
+                    <a href="{{route('create.booking')}}" class="font-bold p-3 px-6 pt-2 text-brightRed bg-white rounded-full baseline hover:bg-veryDarkBlue">Book Now</a>
                 </div>   
             </div>
         </section>

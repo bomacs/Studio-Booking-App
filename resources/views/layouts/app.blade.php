@@ -14,7 +14,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        @role('administrator'))
+        @role('administrator')
             @include('layouts.navigationAdmin')
         @endrole
         @role('photographer')

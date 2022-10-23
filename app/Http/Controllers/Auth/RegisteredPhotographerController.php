@@ -70,7 +70,7 @@ class RegisteredPhotographerController extends Controller
 
         event(new Registered($user));
 
-        return redirect(RouteServiceProvider::HOME)->with('message', 'Photographer was registered succcesfully');
+        return redirect()->back()->with('message', 'Photographer was registered succcesfully');
     }
 }
 
