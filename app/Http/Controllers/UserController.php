@@ -96,10 +96,10 @@ class UserController extends Controller
     
         if (auth()->user()->hasRole('photographer'))
         {
-            return redirect(route('photographer.profile'))->with('message', 'Profile was updated successfullly.');
+            return redirect(route('photographer.profile'))->with('message', 'Profile was updated successfully.');
         } elseif (auth()->user()->hasRole('user'))
         {
-            return redirect(route('user.profile'))->with('message', 'Profile was updated successfullly.');
+            return redirect(route('user.profile'))->with('message', 'Profile was updated successfully.');
         }
     }
 

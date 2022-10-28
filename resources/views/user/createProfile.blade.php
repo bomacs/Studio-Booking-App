@@ -1,7 +1,4 @@
 <x-app-layout>
-    @if (session('message'))
-    <p class="bg-green-400 text-veryDarkBlue text-md">{{ session('message') }}</p>
-    @endif
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('User Profile') }}

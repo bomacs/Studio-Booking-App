@@ -41,14 +41,14 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="w-full px-2 mx-auto mb-20 text-center md:mb-32">
-                        <!--Heading-->
-                        <h2 class="text-2xl font-bold text-center">
-                            Phototgraphers
-                        </h2>
-                        @include('partials.team')
-                    </div>
                 </div>
+                <div class="w-full px-2 mx-auto mb-20 text-center md:mb-32">
+                    <!--Heading-->
+                    <h2 class="text-2xl font-bold text-center">
+                        Photographers
+                    </h2>
+                    @include('partials.team')
+                </div>     
             </div>
         </div>
     </div> 

@@ -23,7 +23,13 @@
         @role('user')
             @include('layouts.navigationUser')
         @endrole
-        <!-- Page Heading -->
+        <!-- alertr messages -->
+        @if (session('message'))
+        <div x-data="{show : true}" x-show= "show" x-init="setTimeout(() => show = false, 3000)" class="container mx-auto max-w-4xl bg-teal-100 border-t border-b border-teal-500 text-teal-900 shadow-md rounded-md px-4 py-3" role="alert">
+            <p>{{ session('message') }}</p>
+        </div>
+        @endif
+        <!-- Page Heading -->   
         <div class="container mx-auto">
         @if (isset($header))
             <header class="bg-white">

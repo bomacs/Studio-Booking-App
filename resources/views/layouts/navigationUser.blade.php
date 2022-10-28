@@ -1,5 +1,5 @@
 <!--Navbar-->
-<nav  x-data="{ open: false }" class="relative container mx-auto p-6 ">
+<nav  x-data="{ open: false }" class="relative container mx-auto py-6 ">
     <!--flex container-->
     <div class="flex items-center justify-between">
         <!--logo-->

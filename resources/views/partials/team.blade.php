@@ -1,6 +1,6 @@
 <div class="container grid grid-cols-1 gap-2 mt-20 mx-auto px-2 md:grid-cols-3">
     @foreach($photographers as $photographer)
-    <div class="max-w-sm rounded-lg shadow-md shadow-brightRedLight">
+    <div class="max-w-md rounded-lg shadow-md shadow-brightRedLight">
         <img
         class="object-cover w-full h-80"
         src="{{ asset('imgs/profile_pic/' . $photographer->userProfile->image_path) }}"
