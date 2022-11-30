@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('event_date');
             $table->time('event_time');
             $table->string('active_phone_no');
-            $table->string('status');
+            $table->string('status')->default('Pending');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -15,7 +15,7 @@
     </head>
     <body class="font-sans">
         <!--Navbar-->
-        <nav  x-data="{ open: false }" class="relative container mx-auto p-6 ">
+        <nav  x-data="{ open: false }" class="relative container mx-auto p-6 mb-20">
             <!--flex container-->
             <div class="flex items-center justify-between">
                 <!--logo-->
@@ -170,7 +170,7 @@
         <p class="bg-green-400 text-veryDarkBlue text-md">{{ session('message') }}</p>
         @endif
         <!--Hero Section-->
-        <section id="hero" class="md:pt-5">
+        <section id="hero" class="max-w-6xl mx-auto md:pt-5">
             <div class="container flex flex-col-reverse mb-20 md:mb-32 md:flex-row md:items-center items-center px-6 mx-auto space-y-0 md:space-y-0">
                 <!--Left Items-->
                 <div class="flex flex-col mb-24 space-y-10 md:w-1/2">
@@ -190,7 +190,7 @@
             </div>
         </section>      
         <!--News Section-->
-        <section id="news">
+        <section id="news" class="max-w-6xl mx-auto md:pt-5">
             <div class="container flex flex-col px-4 mx-auto mb-20 space-y-10 md:space-y-0 md:flex-row md:mb-32">
                 <!--headind or headline-->
                 <div class="container flex flex-col space-y-10 md:w-1/2">
@@ -395,14 +395,14 @@
                         Copyright &copy; 2022, All Rights Reserved
                     </div>
                     <div class="flex flex-col space-y-3 text-white text-sm">
-                        <a href="#" class="hover:text-brightRed">Home</a>
-                        <a href="#" class="hover:text-brightRed">News</a>
-                        <a href="#" class="hover:text-brightRed">Gallery</a>
-                        <a href="#" class="hover:text-brightRed">Packages</a>
-                        <a href="#" class="hover:text-brightRed">Our Team</a>
+                        <a href="/" class="hover:text-brightRed">Home</a>
+                        <a href="#news" class="hover:text-brightRed">News</a>
+                        <a href="#gallery" class="hover:text-brightRed">Gallery</a>
+                        <a href="#packages" class="hover:text-brightRed">Packages</a>
+                        <a href="#team" class="hover:text-brightRed">Our Team</a>
                     </div>
                     <div class="flex flex-col space-y-3 text-white text-sm">
-                        <a href="#" class="hover:text-brightRed">About Us</a>
+                        <a href="#testimonials" class="hover:text-brightRed">About Us</a>
                         <a href="#" class="hover:text-brightRed">Contact Us</a>
                         <a href="#" class="hover:text-brightRed">Help</a>
                         <a href="#" class="hover:text-brightRed">Privacy Policy</a>

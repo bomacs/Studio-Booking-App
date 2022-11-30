@@ -19,7 +19,7 @@
             <div class="bg-gray-800 text-gray-100 flex justify-between items-center md:hidden">
                 <!-- logo -->
                 <div class="p-4">
-                    Photo Booth
+                    RAM Studio
                 </div>
                 <!-- mobile menu button -->
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-4 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
@@ -65,13 +65,18 @@
             </div>
             <!-- content-->
             <div class="flex-1 text-2xl font-bold">
+                  <!-- alert messages -->
+                  @if (session('message'))
+                  <div x-data="{show : true}" x-show= "show" x-init="setTimeout(() => show = false, 3000)" class="container mx-auto max-w-4xl bg-teal-100 border-t border-b border-teal-500 text-teal-900 shadow-md rounded-md px-4 py-3" role="alert">
+                      <p>{{ session('message') }}</p>
+                  </div>
+                  @endif
                 <!-- Page Heading -->
                 <header class="shadow text-2xl text-white">
                     <div class="bg-red-500 py-6 px-4 sm:px-6 lg:px-14">
                         {{ $header }}
                     </div>
                 </header>
-
                 <!-- Page Content -->
                 <main>
                     {{ $slot }}

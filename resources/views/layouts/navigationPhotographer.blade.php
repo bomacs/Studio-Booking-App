@@ -1,5 +1,5 @@
 <!--Navbar-->
-<nav  x-data="{ open: false }" class="relative container mx-auto py-6 ">
+<nav  x-data="{ open: false }" class="relative container mx-auto p-6 ">
     <!--flex container-->
     <div class="flex items-center justify-between">
         <!--logo-->
@@ -24,7 +24,7 @@
             <x-nav-link :href="route('photographer.profile')" :active="request()->routeIs('photographer.profile')">
                 {{ __('Profile') }}
             </x-nav-link>
-            <x-nav-link href="#">
+            <x-nav-link :href="route('photographer.bookings')" :active="request()->routeIs('photographer.bookings')">
                 {{ __('My Bookings') }}
             </x-nav-link>
         </div>
@@ -91,7 +91,7 @@
             <x-responsive-nav-link href="{{route('photographer.profile')}}">
                 {{ __('Profile') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="#">
+            <x-responsive-nav-link href="{{route('photographer.bookings')}}">
                 {{ __('My Bookings') }}
             </x-responsive-nav-link>
         </div>

@@ -20,10 +20,10 @@
                     <h2 class="text-2xl font-bold text-center">
                         Packages 
                     </h2>
-                    <div class="container mx-auto flex flex-wrap mt-20">
+                    <div class="container flex space-x-2 mt-20">
                         @foreach ($packages as $package)  
-                        <div class="lg:w-1/3 md:w-1/2 w-full p-2">
-                            <div class="mx-auto p-8 rounded-xl border border-gray-200 bg-white shadow-md shadow-brightRedLight">
+                        <div class="lg:w-1/3 md:w-1/2 w-full">
+                            <div class="rounded-lg shadow-md shadow-brightRedLight p-4">
                                 <h4 class="text-2xl font-semibold text-center text-veryDarkBlue py-4"> {{ $package->name }} </h4>
                                 <hr>
                                 <h5 class="text-2xl text-center font-bold py-4 text-gray-500">Php {{ $package->price }}</h5>

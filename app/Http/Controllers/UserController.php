@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
     public function indexProfile() {
 
         $userProfile = User::findOrFail(Auth::user()->id);
@@ -107,13 +108,17 @@ class UserController extends Controller
     { 
         $user = User::findOrFail($id);
 
-        if($user->hasRole('photographer')){
-            return view('common.showProfile', [
-                'user' =>  $user 
-             ]) ;
-        }else
-        {
-            return abort(404);
-        }
+        return view('common.showProfile', [
+            'user' =>  $user 
+         ]) ;
+
+        // if($user->hasRole('photographer')){
+        //     return view('common.showProfile', [
+        //         'user' =>  $user 
+        //      ]) ;
+        // }else
+        // {
+        //     return abort(404);
+        // }
     }
 }

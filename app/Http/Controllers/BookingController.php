@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Booking;
-use App\Models\Role;
 use App\Models\User;
+use App\Models\Booking;
 use App\Models\Package;
-use App\Models\UserProfile;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use App\Events\NewBookingPlaced;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\NewBookingReceived;
+use Illuminate\Support\Facades\Notification;
 
 class BookingController extends Controller
 {
@@ -32,7 +32,7 @@ class BookingController extends Controller
             'active_phone_no' => ['required', 'digits:11']        
         ]);
 
-        Booking::create(
+        $booking = Booking::create(
             [
                 'user_id' => Auth::user()->id,
                 'package_id' => $request->package,
@@ -43,13 +43,23 @@ class BookingController extends Controller
                 'active_phone_no' => $request->active_phone_no,
                 'status' => 'Pending'
             ]);
+        
+        $admin = User::whereRoleIs('administrator')->get();
+        $photographer = $booking->photographer;
+        
+        Notification::send($photographer, new NewBookingReceived($booking));
+        Notification::send($admin, new NewBookingReceived($booking));
+        
+        // NewBookingPlaced::dispatch($booking);
 
         return redirect()->back()->with('message', 'Booking has been placed, Thank You!!');
+
+        
     }
 
     public function showUserBookings() 
     {
-        $bookings = Booking::where('user_id', Auth::user()->id)->where('status', 'Pending')->get();
+        $bookings = Booking::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
         
         return view('bookings.showUserBookings', [
             'bookings' => $bookings
@@ -73,3 +83,4 @@ class BookingController extends Controller
     }
 
 }
+    

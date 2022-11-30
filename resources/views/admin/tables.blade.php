@@ -18,7 +18,7 @@
             <!-- mobile menu -->
             <div class="bg-gray-800 text-gray-100 flex justify-between items-center md:hidden">
                 <!-- logo -->
-                <div class="p-4">
+                <div class="p-4 pt-0">
                     <x-application-logo />
                 </div>
                 <!-- mobile menu button -->
@@ -31,8 +31,8 @@
             </div>
             <!-- sidebar -->
             <div :class="{'block': open, '-translate-x-full': ! open}" class="w-60 shadow-md bg-red-100 space-y-6 py-7 px-2 absolute inset-y-0 left-0 -translate-x-full transition duration-200 ease-in-out md:relative md:translate-x-0">
-                <div class="w-full px-8  ">
-                    <x-application-logo></x-application-logo>
+                <div class="w-full px-8">
+                    <x-application-logo/>
                 </div>
                 <nav>
                     <ul class="relative px-2">
@@ -47,7 +47,7 @@
                             </a>
                         </li>
                         <li class="relative">
-                            <a href="{{ route('tables') }}" class="flex items-center text-sm py-4 px-8 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+                            <a href="{{route('tables')}}" class="flex items-center text-sm py-4 px-8 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark">
                             <span>Tables</span>
                             </a>
                         </li>
@@ -81,98 +81,52 @@
             <div class="flex-1 text-2xl font-bold">
                 <!-- Page Heading -->
                 <header class="bg-red-500 shadow text-2xl text-white">
-                    <div class="py-6 px-4 sm:px-6 lg:px-14">
+                    <div class="py-7 px-4 sm:px-6 lg:px-14">
                         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                            {{ __('Admin Dashboard') }}
+                            {{ __('Manage Tables') }}
                         </h2>
                     </div>
                 </header>
                 <!-- Page Content -->
-                <main class="py-4">
+                <main class="p-6">
                       <!-- alert messages -->
                       @if (session('message'))
                       <div x-data="{show : true}" x-show= "show" x-init="setTimeout(() => show = false, 3000)" class="container mx-auto max-w-4xl bg-teal-100 border-t border-b border-teal-500 text-teal-900 shadow-md rounded-md px-4 py-3" role="alert">
                           <p>{{ session('message') }}</p>
                       </div>
                       @endif
-                    <div class="items-center justify-between  px-6 my-6 md:flex  md:space-x-8">
-                        <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3 ">
-                            <div class="w-full text-sm font-semibold text-center mb-2">
-                               TOTAL CLIENTS
-                            </div>
-                            <div class="w-full text-md font-semibold text-center">
-                                100
-                            </div>
+                    <div class="container">
+                        <div class="mt-10">
+                            <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
+                                {{ __('Bookings') }}
+                            </h4>
+                            @include('tables.bookings')
                         </div>
-                        <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg  my-3 md:w-1/3">
-                            <div class="w-full text-sm font-semibold text-center mb-2">
-                               NEW CLIENTS
-                            </div>
-                            <div class="w-full text-md font-semibold text-center">
-                                100
-                            </div>
+                        <div class="mt-10">
+                            <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
+                                {{ __('Users') }}
+                            </h4>
+                            @include('tables.users')
                         </div>
-                        <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
-                            <div class="w-full text-sm font-semibold text-center mb-2">
-                               PHOTOGRAPHERS
-                            </div>
-                            <div class="w-full text-md font-semibold text-center">
-                                100
-                            </div>
+                        <div class="mt-32">
+                            <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
+                                {{ __('Clients') }}
+                            </h4>
+                            @include('tables.clients')
                         </div>
-                    </div>
-                    <div class="items-center justify-between px-6 my-6 md:flex md:space-x-8">
-                        <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
-                            <div class="w-full text-sm font-semibold text-center mb-2">
-                               THIS MONTH BOOKINGS
-                            </div>
-                            <div class="w-full text-md font-semibold text-center">
-                                10
-                            </div>
+                        <div class="mt-32">
+                            <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
+                                {{ __('Photographers') }}
+                            </h4>
+                            @include('tables.photographers')
                         </div>
-                        <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
-                            <div class="w-full text-sm font-semibold text-center mb-2">
-                               ONGOING BOOKINGS
-                            </div>
-                            <div class="w-full text-md font-semibold text-center">
-                                100
-                            </div>
-                        </div>
-                        <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
-                            <div class="w-full text-sm font-semibold text-center mb-2">
-                               FINISHED BOOKINGS
-                            </div>
-                            <div class="w-full text-md font-semibold text-center">
-                                100
-                            </div>
+                        <div class="mt-32">
+                            <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
+                                {{ __('Packages') }}
+                            </h4>
+                            @include('tables.packages')
                         </div>
                     </div>
-                    <div class="block items-center justify-between px-6 my-6 md:flex md:space-x-8">
-                        <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
-                            <div class="w-full text-sm font-semibold text-center mb-2">
-                                TOP PHOTOGRAPHER
-                            </div>
-                            <div class="w-full text-md font-semibold text-center text-ellipsis overflow-hidden">
-                                PHOTOGRAPHER
-                            </div>
-                        </div>
-                        <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
-                            <div class="w-full text-sm font-semibold text-center mb-2">
-                                TOP PACKAGE
-                            </div>
-                            <div class="w-full text-md font-semibold text-center text-ellipsis overflow-hidden">
-                                NAME OF PACKAGE
-                            </div>
-                        </div>
-                        <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
-                            <div class="w-full text-sm font-semibold text-center mb-2">
-                                TOTAL REVENUE
-                            </div>
-                            <div class="w-full text-md font-semibold text-center">
-                                10,000
-                            </div>
-                        </div>
-                    </div>    
                 </main>
             </div>      
         </div>

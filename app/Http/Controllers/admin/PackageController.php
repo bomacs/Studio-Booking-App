@@ -14,7 +14,7 @@ class PackageController extends Controller
 
     public function store(Request $request) 
     {
-        $test = $request->validate([
+        $request->validate([
             'name' => 'required',
             'description' => 'required',
             'includes' => 'required',
@@ -30,6 +30,6 @@ class PackageController extends Controller
             'discount' => $request->input('discount')
         ]);
 
-        return redirect(route('create.package'))->with('message', 'Package was created successfullly.');
+        return redirect(route('admin.dashboard'))->with('message', 'Package was created successfullly.');
     }
 }

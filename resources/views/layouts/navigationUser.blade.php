@@ -1,5 +1,5 @@
 <!--Navbar-->
-<nav  x-data="{ open: false }" class="relative container mx-auto py-6 ">
+<nav  x-data="{ open: false }" class="relative container mx-auto p-6 ">
     <!--flex container-->
     <div class="flex items-center justify-between">
         <!--logo-->
@@ -27,7 +27,7 @@
             <x-nav-link href="{{route('create.booking')}}" :active="request()->routeIs('create.booking')">
                 {{ __('Book Now') }}
             </x-nav-link>
-            <x-nav-link href="{{route('my_bookings')}}">
+            <x-nav-link href="{{route('my_bookings')}}" :active="request()->routeIs('my_bookings')">
                 {{ __('My Bookings') }}
             </x-nav-link>
         </div>

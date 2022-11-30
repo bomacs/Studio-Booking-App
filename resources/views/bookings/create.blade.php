@@ -1,7 +1,4 @@
 <x-app-layout>
-    @if (session('message'))
-    <p class="bg-green-400 text-veryDarkBlue text-md">{{ session('message') }}</p>
-    @endif
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Booking Form') }}
@@ -99,6 +96,17 @@
                                             </div>
                                             <x-input-error :messages="$errors->get('event_time')" class="mt-2 ml-4" />
                                         </div>
+                                    </div>
+                                    <div>
+                                        <p class="uppercase mt-5 px-2 py-2 font-semibold">Select Payment Method </p>
+                                         <div class="flex flex-col space-y-2 p-4 md:flex-row md:space-x-8 md:space-y-0">
+                                            <button class="w-full text-white font-semibold border-0 shadow-sm bg-blue-900 p-8 rounded-md">
+                                                Credit/Debit Card
+                                            </button>
+                                            <button class="w-full text-white font-semibold border-0 shadow-sm bg-blue-500 p-8 rounded-md">
+                                                GCash
+                                            </button>
+                                        </div>  
                                     </div>
                                     <div class="flex flex-row justify-end mt-4 md:mr-4">
                                         <x-primary-button class="px-6">

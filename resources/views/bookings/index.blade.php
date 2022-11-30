@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-center font-semibold text-2xl text-lgrey leading-tight">
+        <h2 class="text-center font-semibold text-2xl text-darkGrayishBlue leading-tight">
             {{ __('Booking List') }}
         </h2>
     </x-slot>
@@ -11,8 +11,8 @@
     </div> --}}
     <section class="mt-5">
         <div class="overflow-x-auto relative">
-            <table class="table-auto mx-auto text-sm text-center text-gray-500">
-                <thead class="text-xs text-lgrey uppercase bg-dgrey">
+            <table class="table-auto mx-auto text-sm text-center">
+                <thead class="text-xs text-white uppercase bg-veryDarkBlue">
                     <tr>
                         <th scope="col" class="py-3 px-6">
                             BOOKING ID
@@ -42,9 +42,9 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-xs bg-white">
                     @foreach ($bookings as $booking)
-                    <tr class="bg-gray-400 border-b text-dgrey">
+                    <tr class="border-b text-darkGrayishBlue">
                         <td class="text-center py-4 px-6">
                             {{$booking->id}}
                         </td>

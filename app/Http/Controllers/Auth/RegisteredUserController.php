@@ -49,6 +49,7 @@ class RegisteredUserController extends Controller
 
           // Attached roles to the user
         $user->attachRole('user');
+    
 
         // Create temporary profile
         $user->userProfile()->updateOrCreate(

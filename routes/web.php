@@ -7,11 +7,13 @@ use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TableController;
 use App\Http\Controllers\BookingController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\admin\GalleryController;
 use App\Http\Controllers\admin\PackageController;
+use App\Http\Controllers\admin\ManageUsersController;
+use App\Http\Controllers\PhotographerBookingController;
 
 ;
 
@@ -28,9 +30,9 @@ use App\Http\Controllers\admin\PackageController;
 // Home Page
 Route::get('/', function () {
     return view('home', [
-        'galleryImages' => Gallery::all(),
-        'photographers' => User::whereRoleIs('photographer')->get(),
-        'packages' => Package::all(),
+        'galleryImages' => Gallery::paginate(6),
+        'photographers' => User::whereRoleIs('photographer')->paginate(3),
+        'packages' => Package::paginate(3),
     ]);
 })->name('home');
 
@@ -46,6 +48,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:administrator','auth',
     Route::post('gallery/create', [GalleryController::class, 'store']);
     Route::get('package/create', [PackageController::class, 'create'])->name('create.package');
     Route::post('package/create', [PackageController::class, 'store']);
+    Route::get('users/create', [ManageUsersController::class, 'create'])->name('create.user');
+    Route::post('users/create', [ManageUsersController::class, 'store']);
+    Route::get('/tables', [TableController::class, 'index'])->name('tables');
 });
 
 // Photographer Only
@@ -53,6 +58,10 @@ Route::group(['prefix' => 'photographer', 'middleware' => ['role:photographer','
     Route::get('/profile/create',  [UserController::class, 'createProfile'])->name('createPhotographerProfile');
     Route::post('/profile/create',  [UserController::class, 'updateProfile']);
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('photographer.dashboard');
+    // Bookings route
+    Route::get('/bookings', [PhotographerBookingController::class, 'index'])->name('photographer.bookings');
+    Route::post('/bookings', [PhotographerBookingController::class, 'update']);
+
 });
 
 // User only
@@ -75,9 +84,9 @@ Route::group(['middleware' =>['role:user','auth', 'verified']], function () {
 });
 
 // Photographer and user @auth
-Route::group(['prefix' => 'photographer', 'middleware' => ['auth', 'verified']], function () {
+Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/profile', [UserController::class, 'indexProfile'])->name('photographer.profile');
-    Route::get('/{id}' , [UserController::class, 'showProfile']);
+    Route::get('/profile/{id}' , [UserController::class, 'showProfile'])->where('id', '[0-9]+')->name('profile.show');
 });
 
 // User and Photographer @auth

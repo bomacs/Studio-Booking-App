@@ -12,9 +12,12 @@
         </h4>
         <button
             class="px-4 py-2 text-sm shadow  rounded-md bg-brightRed shadow-brightRedLight text-white hover:bg-brightRedLight hover:text-veryDarkBlue">
-            <a href="/photographer/{{$photographer->id}}">View More</a>  
+            <a href="/profile/{{$photographer->id}}">View More</a>  
         </button>
         </div>
     </div>
     @endforeach
+    <div class="text-xs mt-2">
+        {{ $photographers->links() }}
+    </div>
 </div>

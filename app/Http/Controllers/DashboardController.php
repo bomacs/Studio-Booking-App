@@ -13,21 +13,21 @@ class DashboardController extends Controller
     public function index() {
         if (Auth::user()->hasRole('administrator')) {
             return view('admin.dashboard', [
-                'galleryImages' => Gallery::all(),
-                'photographers' => User::whereRoleIs('photographer')->get(),
-                'packages' => Package::all(),
+                'galleryImages' => Gallery::paginate(6),
+                'photographers' => User::whereRoleIs('photographer')->paginate(3),
+                'packages' => Package::paginate(3),
             ]);
         } elseif (Auth::user()->hasRole('photographer')) {
             return view('photographer.dashboard', [
-                'galleryImages' => Gallery::all(),
-                'photographers' => User::whereRoleIs('photographer')->get(),
-                'packages' => Package::all(),
+                'galleryImages' => Gallery::paginate(6),
+                'photographers' => User::whereRoleIs('photographer')->paginate(3),
+                'packages' => Package::paginate(3),
             ]);
         } elseif (Auth::user()->hasRole('user')) {
             return view('user.dashboard', [
-                'galleryImages' => Gallery::all(),
-                'photographers' => User::whereRoleIs('photographer')->get(),
-                'packages' => Package::all(),
+                'galleryImages' => Gallery::paginate(6),
+                'photographers' => User::whereRoleIs('photographer')->paginate(3),
+                'packages' => Package::paginate(3),
             ]);
         } 
     }
