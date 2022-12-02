@@ -104,6 +104,12 @@
                         </div>
                         <div class="mt-10">
                             <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
+                                {{ __('Payments Details') }}
+                            </h4>
+                            @include('tables.payments')
+                        </div>
+                        <div class="mt-10">
+                            <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
                                 {{ __('Users') }}
                             </h4>
                             @include('tables.users')

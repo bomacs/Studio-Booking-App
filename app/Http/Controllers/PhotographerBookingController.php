@@ -33,4 +33,20 @@ class PhotographerBookingController extends Controller
 
     }
 
+    public function cancel(Request $request)
+    {
+        $request->validate([
+           'bookingId' => 'required',
+        ]);
+
+        $booking = Booking::findOrFail($request->bookingId);
+
+        $booking->status = 'Cancelled';
+
+        $booking->save();
+
+        return redirect()->back()->with('cancel', 'Owws, Booking was cancelled!!');
+
+    }
+
 }

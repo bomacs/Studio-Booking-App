@@ -332,7 +332,7 @@ return [
         */
         'roles_restrictions' => [
             // The user won't be able to remove roles already assigned to users.
-            'not_removable' => [],
+            'not_removable' => ['administrator'],
 
             // The user won't be able to edit the role and the permissions assigned.
             'not_editable' => [],

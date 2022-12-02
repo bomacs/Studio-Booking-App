@@ -74,7 +74,16 @@
                             @endif
                         </td>
                         <td class="tet-xs text-center p-3">
-                            <a href="#" class="bg-brightRed text-white rounded-md p-2">Cancel</a>
+                            @if ($booking->status === 'Pending'| $booking->status === 'Confirmed')
+                            <form method="POST" action="{{ route('photographer.bookings.cancel') }}">
+                                @csrf
+                                <input type="hidden" id="bookingId" name="bookingId" value="{{$booking->id}}">
+                                <x-primary-button class="font-normal bg-brightRed p-1">
+                                    {{ __('Cancel') }}
+                                </x-primary-button>
+                            </form>  
+                            @endif
+                            {{-- <a href="#" class="bg-brightRed text-white rounded-md p-2">Cancel</a> --}}
                         </td>
                     </tr>
                     @endforeach

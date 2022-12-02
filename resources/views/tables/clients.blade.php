@@ -42,7 +42,7 @@
                         {{ $client->hasRole('user')? 'user' : null }}
                     </td>
                     <td class="text-center py-4 px-6 whitespace-nowrap">
-                        <a href="#" class="bg-indigo-500 text-white rounded-md py-1 px-4">View</a>
+                        <a href="/profile/{{$client->id}}" class="bg-indigo-500 text-white rounded-md py-1 px-4">View</a>
                         <a href="#" class="bg-green-500 text-white rounded-md py-1 px-4">Edit</a>
                         <a href="#" class="bg-red-500 text-white rounded-md py-1 px-4">Delete</a>
                     </td>

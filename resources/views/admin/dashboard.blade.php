@@ -101,59 +101,67 @@
                                TOTAL CLIENTS
                             </div>
                             <div class="w-full text-md font-semibold text-center">
-                                100
+                                {{count($clients)}}
                             </div>
                         </div>
                         <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg  my-3 md:w-1/3">
                             <div class="w-full text-sm font-semibold text-center mb-2">
-                               NEW CLIENTS
+                                PHOTOGRAPHERS
                             </div>
                             <div class="w-full text-md font-semibold text-center">
-                                100
+                                {{count($photographers)}}
                             </div>
                         </div>
                         <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
                             <div class="w-full text-sm font-semibold text-center mb-2">
-                               PHOTOGRAPHERS
+                                PACKAGES
                             </div>
                             <div class="w-full text-md font-semibold text-center">
-                                100
+                                {{count($packages)}}
                             </div>
                         </div>
                     </div>
                     <div class="items-center justify-between px-6 my-6 md:flex md:space-x-8">
                         <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
                             <div class="w-full text-sm font-semibold text-center mb-2">
-                               THIS MONTH BOOKINGS
-                            </div>
-                            <div class="w-full text-md font-semibold text-center">
-                                10
-                            </div>
-                        </div>
-                        <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
-                            <div class="w-full text-sm font-semibold text-center mb-2">
                                ONGOING BOOKINGS
                             </div>
                             <div class="w-full text-md font-semibold text-center">
-                                100
+                                {{count($ongoing_bookings)}}
                             </div>
                         </div>
                         <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
                             <div class="w-full text-sm font-semibold text-center mb-2">
-                               FINISHED BOOKINGS
+                               PENDING BOOKINGS
                             </div>
                             <div class="w-full text-md font-semibold text-center">
-                                100
+                                {{count($pending_bookings)}}
+                            </div>
+                        </div>
+                        <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
+                            <div class="w-full text-sm font-semibold text-center mb-2">
+                               CANCELLED BOOKINGS
+                            </div>
+                            <div class="w-full text-md font-semibold text-center">
+                                {{count($cancelled_bookings)}}
                             </div>
                         </div>
                     </div>
                     <div class="block items-center justify-between px-6 my-6 md:flex md:space-x-8">
                         <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
                             <div class="w-full text-sm font-semibold text-center mb-2">
+                               THIS MONTH BOOKINGS
+                            </div>
+                            <div class="w-full text-md font-semibold text-center">
+                                {{count($new_bookings)}}
+                            </div>
+                        </div>
+                        <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
+                            <div class="w-full text-sm font-semibold text-center mb-2">
                                 TOP PHOTOGRAPHER
                             </div>
                             <div class="w-full text-md font-semibold text-center text-ellipsis overflow-hidden">
-                                PHOTOGRAPHER
+                                {{ $top_photographer->userProfile->firstname . ' ' .  $top_photographer->userProfile->lastname }}
                             </div>
                         </div>
                         <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
@@ -161,15 +169,7 @@
                                 TOP PACKAGE
                             </div>
                             <div class="w-full text-md font-semibold text-center text-ellipsis overflow-hidden">
-                                NAME OF PACKAGE
-                            </div>
-                        </div>
-                        <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
-                            <div class="w-full text-sm font-semibold text-center mb-2">
-                                TOTAL REVENUE
-                            </div>
-                            <div class="w-full text-md font-semibold text-center">
-                                10,000
+                                {{ $top_package->name}}
                             </div>
                         </div>
                     </div>    

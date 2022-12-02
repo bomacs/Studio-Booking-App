@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Payment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,7 +19,7 @@ class Booking extends Model
         'event_time',
         'photographer_id',
         'active_phone_no',
-        'status'
+        'status',
     ];
 
     public function user()
@@ -36,4 +37,8 @@ class Booking extends Model
         return $this->belongsTo(Package::class, 'package_id', 'id');
     }
 
+    public function payment()
+    {
+        return $this->hasOne(Payment::class, 'booking_id', 'id');
+    }
 }

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>RAM Studio |  Online Booking Site</title>
+        <title>RAM Studio Online Management System</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -23,12 +23,23 @@
         @role('user')
             @include('layouts.navigationUser')
         @endrole
-        <!-- alertr messages -->
+        <!-- alert messages -->
         @if (session('message'))
         <div x-data="{show : true}" x-show= "show" x-init="setTimeout(() => show = false, 3000)" class="container mx-auto max-w-4xl bg-teal-100 border-t border-b border-teal-500 text-teal-900 shadow-md rounded-md px-4 py-3" role="alert">
             <p>{{ session('message') }}</p>
         </div>
+        @endif 
+        @if(session('cancel'))
+        <div x-data="{show : true}" x-show= "show" x-init="setTimeout(() => show = false, 3000)" class="container mx-auto max-w-4xl bg-red-300 border-t border-b border-red-500 text-gray-900 shadow-md rounded-md px-4 py-3" role="alert">
+            <p>{{ session('cancel') }}</p>
+        </div>
         @endif
+        @if(session('error'))
+        <div x-data="{show : true}" x-show= "show" x-init="setTimeout(() => show = false, 3000)" class="container mx-auto max-w-4xl bg-red-300 border-t border-b border-red-500 text-gray-900 shadow-md rounded-md px-4 py-3" role="alert">
+            <p>{{ session('error') }}</p>
+        </div>
+        @endif
+
         <!-- Page Heading -->   
         <div class="container mx-auto">
         @if (isset($header))

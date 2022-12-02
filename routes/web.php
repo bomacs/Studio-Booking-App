@@ -61,7 +61,8 @@ Route::group(['prefix' => 'photographer', 'middleware' => ['role:photographer','
     // Bookings route
     Route::get('/bookings', [PhotographerBookingController::class, 'index'])->name('photographer.bookings');
     Route::post('/bookings', [PhotographerBookingController::class, 'update']);
-
+    Route::get('/bookings/cancel', [PhotographerBookingController::class, 'index'])->name('photographer.bookings.cancel');
+    Route::post('/bookings/cancel', [PhotographerBookingController::class, 'cancel']);
 });
 
 // User only
@@ -73,6 +74,7 @@ Route::group(['prefix' => 'user', 'middleware' =>['role:user','auth', 'verified'
     Route::get('/bookings/create', [BookingController::class, 'create'])->name('create.booking');
     Route::post('/bookings/create', [BookingController::class, 'store']);
     Route::get('/my_bookings', [BookingController::class, 'showUserBookings'])->name('my_bookings');
+    Route::post('/my_bookings', [BookingController::class, 'cancel']);
     Route::get('/package/{id}/book', [BookingController::class, 'bookPackage'])->name('book.package');
     Route::post('/package/{id}/book', [BookingController::class, 'store']);
 });
@@ -83,10 +85,11 @@ Route::group(['middleware' =>['role:user','auth', 'verified']], function () {
     Route::post('/photographer/{id}/create', [BookingController::class, 'store']);
 });
 
-// Photographer and user @auth
+// common route
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/profile', [UserController::class, 'indexProfile'])->name('photographer.profile');
     Route::get('/profile/{id}' , [UserController::class, 'showProfile'])->where('id', '[0-9]+')->name('profile.show');
+    Route::get('/booking/{id}', [BookingController::class, 'showBooking'])->where('id', '[0-9]+')->name('booking.show');
 });
 
 // User and Photographer @auth

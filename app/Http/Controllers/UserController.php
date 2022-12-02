@@ -111,14 +111,5 @@ class UserController extends Controller
         return view('common.showProfile', [
             'user' =>  $user 
          ]) ;
-
-        // if($user->hasRole('photographer')){
-        //     return view('common.showProfile', [
-        //         'user' =>  $user 
-        //      ]) ;
-        // }else
-        // {
-        //     return abort(404);
-        // }
     }
 }

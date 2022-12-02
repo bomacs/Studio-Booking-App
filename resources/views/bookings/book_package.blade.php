@@ -1,7 +1,4 @@
 <x-app-layout>
-    @if (session('message'))
-    <p class="bg-green-400 text-veryDarkBlue text-md">{{ session('message') }}</p>
-    @endif
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Booking Form') }}
@@ -17,6 +14,9 @@
                         <div class="bg-brightRedSupLight p-5 shadow-sm rounded-md">
                             <div class="flex items-center justify-center p-4 font-semibold text-gray-900 leading-8">
                                 <x-application-logo></x-application-logo>
+                            </div>
+                            <div class="flex items-center justify-center mb-8">
+                                <p class="text-lg text-red-800 underline italic mt-2 px-2 py-2 md:mt-2">NOTE: placing your booking needs to have a 20% downpayment.</p>
                             </div>
                             <div class="flex flex-col justify-between md:flex-row md:space-x-4">
                                 <div class="flex flex-col space-y-6 text-sm text-veryDarkBlue w-full md:w-1/2">
@@ -55,8 +55,6 @@
                                         </div>
                                         <x-input-error :messages="$errors->get('event_date  ')" class="mt-2 ml-4" />
                                     </div>
-                                </div>
-                                <div class="flex flex-col space-y-6 text-sm text-veryDarkBlue w-full md:w-1/2">
                                     <div>
                                         <div class="flex flex-col justify-between mt-2 md:flex-row">
                                             <div class="w-full">
@@ -97,16 +95,37 @@
                                             <x-input-error :messages="$errors->get('event_time')" class="mt-2 ml-4" />
                                         </div>
                                     </div>
-                                    <div class="flex flex-row justify-end mt-4 md:mr-4">
-                                        <x-primary-button class="px-6">
-                                            {{ __('Place Booking') }}
-                                        </x-primary-button>
+                                </div>
+                                <div class="flex flex-col justify-between mt-2 md:w-1/2 md:flex-row">
+                                    <div class="w-full">
+                                        <x-input-label for="photographer" class="px-2 py-2 font-semibold" :value="__('Select Payment Method')" />
                                     </div>
-                             
+                                    <div x-data="{open: false}" class="w-full">
+                                        <select @change="$event.target.value == 'gcash' ? open=true : open=false" name="payment" id="payment" value="{{old('payment')}}" class ="text-sm block mt-1 w-full border-dgrey focus:border-indigo-300 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" required>
+                                            <option value=" " selected disabled>Select here..</option>
+                                            <option value="cash">Cash</option>
+                                            <option value="gcash">Gcash</option>
+                                        </select> 
+                                        <div class="mt-2">
+                                            <x-input-error :messages="$errors->get('payment')" class="mt-2 ml-4" />
+                                            <x-input-error :messages="$errors->get('ref_num')" class="mt-2 ml-4" />
+                                        </div>
+                                        <div x-show="open" class="w-full">
+                                            <img src="{{ asset('imgs/gcash_QR/gcash.jpg')}}" alt="GCash QR code" height="100" width="500">
+                                            <div class="flex w-full mt-2 md:flex-row">
+                                                <x-input-label for="ref_num" class="w-full px-2 py-2 font-semibold" :value="__('Reference #:')" />
+                                                <x-text-input id="ref_num" class="block w-full py-2 text-darkGrayishBlue hover:text-darkBlue" type="text" name="ref_num" :value="old('ref_num')" />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="flex flex-row justify-end mt-4 md:mr-4">
+                                <x-primary-button class="px-6">
+                                    {{ __('Place Booking') }}
+                                </x-primary-button>
+                            </div>
                         </div>
-                        <!-- End of about section -->
                         <div class="my-4"></div>
                     </div>
                 </div>

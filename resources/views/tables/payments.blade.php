@@ -7,19 +7,16 @@
                         ID
                     </th>
                     <th scope="col" class="py-3 px-4">
-                        PACKAGE
+                        BOOKING_ID
                     </th>
                     <th scope="col" class="py-3 px-4">
-                        CLIENT
+                        PAYMENT TYPE
                     </th>
                     <th scope="col" class="py-3 px-4">
-                        PHOTOGRAPHER
+                        DOWNPAYMENT
                     </th>
                     <th scope="col" class="py-3 px-4">
-                        DATE
-                    </th>
-                    <th scope="col" class="py-3 px-4">
-                        TIME
+                        REFERENCE NO.
                     </th>
                     <th scope="col" class="py-3 px-4">
                         STATUS
@@ -30,31 +27,28 @@
                 </tr>
             </thead>
             <tbody class="text-xs bg-white">
-                @foreach ($bookings as $booking)
+                @foreach ($payments as $payment)
                 <tr class="border-b text-darkGrayishBlue">
                     <td class="text-center py-2 px-4 whitespace-nowrap">
-                        {{$booking->id}}
+                        {{$payment->id}}
                     </td>
                     <td class="text-center py-2 px-4 whitespace-nowrap">
-                        {{$booking->package->name}}
+                        {{$payment->booking_id}}
+                    </td>
+                    <td class="text-center py-2 px-4 whitespace-nowrap">
+                        {{$payment->payment_type}}
                     </td>
                     <td class="capitalize text-center py-2 px-4 whitespace-nowrap">
-                        {{$booking->user->userProfile->firstname}} {{$booking->user->userProfile->lastname}}
+                        {{$payment->downpayment}}
                     </td>
                     <td class="capitalize text-center py-2 px-4 whitespace-nowrap">
-                        {{$booking->photographer->userProfile->firstname}} {{$booking->photographer->userProfile->lastname}}
+                        {{$payment->ref_num}}                   
                     </td>
                     <td class="text-center py-2 px-4 whitespace-nowrap">
-                        {{$booking->event_date}}
+                        {{$payment->payment_status}}
                     </td>
                     <td class="text-center py-2 px-4 whitespace-nowrap">
-                        {{$booking->event_time}}
-                    </td>
-                    <td class="text-center py-2 px-4 whitespace-nowrap">
-                        {{$booking->status}}
-                    </td>
-                    <td class="text-center py-2 px-4 whitespace-nowrap">
-                        <a href="/booking/{{$booking->id}}" class="bg-indigo-500 text-white rounded-md py-1 px-4">View</a>
+                        <a href="#" class="bg-indigo-500 text-white rounded-md py-1 px-4">View</a>
                         <a href="#" class="bg-green-500 text-white rounded-md py-1 px-4">Edit</a>
                         <a href="#" class="bg-red-500 text-white rounded-md py-1 px-4">Delete</a>
                     </td>
@@ -63,7 +57,7 @@
             </tbody>
         </table>
         <div class="text-xs mt-2">
-            {{ $bookings->links() }}
+            {{ $payments->links() }}
         </div>
     </div>
 </section>
