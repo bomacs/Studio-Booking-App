@@ -35,7 +35,7 @@
                     <a href="#gallery" class="hover:text-darkGrayishBlue">Gallery</a>
                     <a href="#team" class="hover:text-darkGrayishBlue">Team</a>
                     <a href="#packages" class="hover:text-darkGrayishBlue">Packages</a>
-                    <a href="#testimonials" class="hover:text-darkGrayishBlue" class="shrink-0">About Us</a>
+                    <a href="#aboutUs" class="hover:text-darkGrayishBlue" class="shrink-0">About Us</a>
                 </div>
                 <!-- side dropdown menu -->
                 @if (Route::has('login'))
@@ -116,7 +116,7 @@
                     <x-responsive-nav-link href="#team">
                         {{ __('Team') }}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link href="#testimonials">
+                    <x-responsive-nav-link href="#aboutUs">
                         {{ __('About Us') }}
                     </x-responsive-nav-link>
                 </div>
@@ -300,6 +300,16 @@
                 @include('partials.package')
             </div>
         </section>
+        <!-- About Us-->
+        <section id="aboutUs">
+            <div class="max-w-6xl px-5 mx-auto mb-20 text-center md:mb-32">
+                <!--heading-->
+                <h2 class="text-4xl font-bold text-center">
+                    About RAM Studio
+                </h2>
+                @include('partials.about')
+            </div>
+        </section>
         <!--Testimonials-->
         <section id="testimonials">
             <!--Container to heading and testm blocks-->
@@ -311,7 +321,7 @@
                 <!--Testimonial Container-->
                 <div class="flex flex-col mt-24 space-y-8 md:flex-row md:space-y-0 md:space-x-6">
                     <!--testimonial 1-->
-                    <div class="flex flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray md:w-1/3">
+                    <div class="flex flex-col items-center p-6 space-y-6 rounded-lg bg-gray-200 md:w-1/3">
                         <img src="imgs/avatars/avatarBoy01.png" class="w-16 -mt-14" alt="">
                         <h5 class="texgt-lg font-bold">Lorem Ipsum Lorem</h5>
                         <p class="text-sm text-darkGrayishBlue">
@@ -319,7 +329,7 @@
                         </p>
                     </div>
                     <!--testimonial 2-->
-                    <div class="flex flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray md:w-1/3">
+                    <div class="flex flex-col items-center p-6 space-y-6 rounded-lg bg-gray-200 md:w-1/3">
                         <img src="imgs/avatars/avatarBoy02.png" class="w-16 -mt-14" alt="">
                         <h5 class="texgt-lg font-bold">Lorem Ipsum Lorem</h5>
                         <p class="text-sm text-darkGrayishBlue">
@@ -327,7 +337,7 @@
                         </p>
                     </div>
                     <!--testimonial 3-->
-                    <div class="flex flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray md:w-1/3">
+                    <div class="flex flex-col items-center p-6 space-y-6 rounded-lg bg-gray-200 md:w-1/3">
                         <img src="imgs/avatars/avatarGirl01.png" class="w-16 -mt-14" alt="">
                         <h5 class="texgt-lg font-bold">Lorem Ipsum Lorem</h5>
                         <p class="text-sm text-darkGrayishBlue">
@@ -372,7 +382,7 @@
                     <!-- Social Links Container-->
                     <div class="flex justify-center space-x-4">
                         <!-- Link 1-->
-                        <a href="#">
+                        <a href="">
                             <img src="imgs/socmed/facebook_icon.svg" alt="facebook icon" class="h-8">
                         </a>
                         <!-- Link 2-->
@@ -402,7 +412,7 @@
                         <a href="#team" class="hover:text-brightRed">Our Team</a>
                     </div>
                     <div class="flex flex-col space-y-3 text-white text-sm">
-                        <a href="#testimonials" class="hover:text-brightRed">About Us</a>
+                        <a href="#aboutUs" class="hover:text-brightRed">About Us</a>
                         <a href="#" class="hover:text-brightRed">Contact Us</a>
                         <a href="#" class="hover:text-brightRed">Help</a>
                         <a href="#" class="hover:text-brightRed">Privacy Policy</a>

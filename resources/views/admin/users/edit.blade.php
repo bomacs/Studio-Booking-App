@@ -6,14 +6,14 @@
             </a>
         </x-slot>
 
-        <form method="POST" action="{{ route('create.user') }}">
+        <form method="POST" action="{{ route('user.update', $user->id) }}">
             @csrf
-
+            @method('PUT')
             <!-- Name -->
             <div>
                 <x-input-label for="username" :value="__('User Name')" />
 
-                <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus />
+                <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" value="{{$user->username}}" required autofocus />
 
                 <x-input-error :messages="$errors->get('username')" class="mt-2" />
             </div>
@@ -22,7 +22,7 @@
             <div class="mt-4">
                 <x-input-label for="email" :value="__('Email')" />
 
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{ $user->email }}" required />
 
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
@@ -33,7 +33,8 @@
 
                 <x-text-input id="password" class="block mt-1 w-full"
                                 type="password"
-                                name="password"
+                                name="password" 
+                                value="{{$user->password}}"
                                 required autocomplete="new-password" />
 
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
@@ -44,24 +45,25 @@
                 <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
                 <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
+                                type="password" 
+                                value="{{$user->password}}"
                                 name="password_confirmation" required />
 
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
             <!-- Role -->
             <div class="mt-4">
-                <x-input-label for="role" class="px-2 py-2 font-semibold" :value="__('Role')" />
+                <x-input-label for="package" class="px-2 py-2 font-semibold" :value="__('Role')" />
             </div>
             <div class="mt-4">
                 <select name="role" id="role" value="{{old('role')}}" class ="text-sm block mt-1 w-full border-dgrey focus:border-indigo-300 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" required>
                     <option value="" selected disabled>Select role..</option>
                     @foreach($roles as $role)
-                    <option value="{{ $role->id}}">{{ $role->name}}</option>
+                    <option value="{{ $role->id}}" @selected($user->roles->first()->id == $role->id)>{{ $role->name}}</option>
                     @endforeach
                 </select>   
             </div>
-            <!--terms and conditions-->
+            {{-- <!--terms and conditions-->
             <div class="mt-4">
                 <label for="terms_conditions" class="inline-flex items-center">
                     <input id="terms_conditions" type="checkbox" name="terms_conditions" value="agree" class="rounded border-gray-300 text-brightRed shadow-sm focus:border-brightRedLight focus:ring focus:ring-brightRedLight focus:ring-opacity-50">
@@ -71,14 +73,14 @@
                     </span>
                 </label>
                 <x-input-error :messages="$errors->get('terms_conditions')" class="mt-2" />
-            </div>
+            </div> --}}
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                {{-- <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
-                </a>
+                </a> --}}
 
                 <x-primary-button class="ml-4">
-                    {{ __('Register') }}
+                    {{ __('Save') }}
                 </x-primary-button>
             </div>
         </form>

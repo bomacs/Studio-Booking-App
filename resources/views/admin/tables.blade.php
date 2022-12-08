@@ -95,38 +95,38 @@
                           <p>{{ session('message') }}</p>
                       </div>
                       @endif
-                    <div class="container">
+                    <div class="container px-12">
                         <div class="mt-10">
                             <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
                                 {{ __('Bookings') }}
                             </h4>
                             @include('tables.bookings')
                         </div>
-                        <div class="mt-10">
+                        <div class="mt-24">
                             <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
                                 {{ __('Payments Details') }}
                             </h4>
                             @include('tables.payments')
                         </div>
-                        <div class="mt-10">
+                        <div class="mt-24">
                             <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
                                 {{ __('Users') }}
                             </h4>
                             @include('tables.users')
                         </div>
-                        <div class="mt-32">
+                        <div class="mt-24">
                             <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
                                 {{ __('Clients') }}
                             </h4>
                             @include('tables.clients')
                         </div>
-                        <div class="mt-32">
+                        <div class="mt-24">
                             <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
                                 {{ __('Photographers') }}
                             </h4>
                             @include('tables.photographers')
                         </div>
-                        <div class="mt-32">
+                        <div class="mt-24">
                             <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
                                 {{ __('Packages') }}
                             </h4>

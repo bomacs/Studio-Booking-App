@@ -12,7 +12,7 @@ class PhotographerBookingController extends Controller
     {
         return view('bookings.indexPhotographerBookings',
         [
-            'bookings' => Booking::where('photographer_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get()
+            'bookings' => Booking::where('photographer_id', Auth::user()->id)->orderBy('created_at', 'DESC')->paginate(10)
         ]
             );
     }

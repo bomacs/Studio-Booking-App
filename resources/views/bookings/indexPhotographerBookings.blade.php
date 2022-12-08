@@ -83,15 +83,14 @@
                                 </x-primary-button>
                             </form>  
                             @endif
-                            {{-- <a href="#" class="bg-brightRed text-white rounded-md p-2">Cancel</a> --}}
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            {{-- <div class="pt-6 p-4 mx-auto">
-                Booking Links
-            </div>      --}}
+            <div class="pt-6 p-4 mx-auto">
+                {{ $bookings->links() }}
+            </div>     
         </div>
     </section>
 </x-app-layout> 

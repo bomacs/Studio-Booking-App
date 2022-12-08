@@ -6,10 +6,13 @@ use App\Models\Payment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Prunable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Nette\SmartObject;
 
 class Booking extends Model
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes, Prunable; 
     
     protected $fillable = [
         'user_id',
@@ -21,6 +24,11 @@ class Booking extends Model
         'active_phone_no',
         'status',
     ];
+
+    public function prunable()
+    {
+            return static::where('created_at', '<=  ', now()->subWeek());
+    }
 
     public function user()
     {

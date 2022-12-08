@@ -21,9 +21,6 @@
             <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                 {{ __('Dashboard') }}
             </x-nav-link>
-            {{-- <x-nav-link href="#">
-                {{ __('Bookings') }}
-            </x-nav-link> --}}
         </div>
         <!-- side dropdown menu -->
         @if (Route::has('login'))

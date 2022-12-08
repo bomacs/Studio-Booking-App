@@ -1,7 +1,7 @@
 <section class="mt-2">
     <div class="overflow-x-auto relative">
-        <table class="table-auto mx-auto text-sm text-center border">
-            <thead class="text-xs text-white uppercase bg-veryDarkBlue">
+        <table class="w-full table-auto mx-auto text-sm text-center border">
+            <thead class="w-full text-xs text-white uppercase bg-veryDarkBlue">
                 <tr>
                     <th scope="col" class="py-3 px-4">
                         ID
@@ -26,7 +26,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody class="text-xs bg-white">
+            <tbody class="w-full text-xs bg-white">
                 @foreach ($payments as $payment)
                 <tr class="border-b text-darkGrayishBlue">
                     <td class="text-center py-2 px-4 whitespace-nowrap">
@@ -47,10 +47,16 @@
                     <td class="text-center py-2 px-4 whitespace-nowrap">
                         {{$payment->payment_status}}
                     </td>
-                    <td class="text-center py-2 px-4 whitespace-nowrap">
-                        <a href="#" class="bg-indigo-500 text-white rounded-md py-1 px-4">View</a>
-                        <a href="#" class="bg-green-500 text-white rounded-md py-1 px-4">Edit</a>
-                        <a href="#" class="bg-red-500 text-white rounded-md py-1 px-4">Delete</a>
+                    <td class="flex flex-row justify-around text-center py-2 px-4">
+                        <a href="{{ route('payment.show', $payment->id) }}" class="bg-indigo-500 text-white rounded-md py-1 px-4">View</a>
+                        <a href="{{ route('payment.edit', $payment->id) }}" class="bg-green-500 text-white rounded-md py-1 px-4">Edit</a>
+                        <form method="POST" action="{{ route('payment.delete', $payment->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="bg-red-500 text-white rounded-md py-1 px-4">
+                                {{ __('Delete') }}
+                            <button>
+                        </form> 
                     </td>
                 </tr>
                 @endforeach

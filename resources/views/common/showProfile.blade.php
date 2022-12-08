@@ -23,9 +23,15 @@
                             <h1 class="text-veryDarkBlue font-bold text-xl leading-8 my-1">
                                 {{ $user->userProfile->firstname . ' ' . $user->userProfile->lastname}}
                             </h1>
-                            <h3 class="text-darkBlue font-lg text-semibold leading-6">
-                                {{ $user->hasRole('user')??$user->hasRole('photographer')? 'User' : 'Photographer' }}
-                            </h3>
+                            @if($user->isAn('administrator'))
+                            <h3> Admin </h3>
+                            @endif
+                            @if($user->isAn('photographer'))
+                            <h3> Photographer </h3>
+                            @endif
+                            @if($user->isAn('user'))
+                            <h3> User </h3>
+                            @endif
                             <p class="text-sm text-darkGrayishBlue hover:text-veryDarkBlue leading-6">
                                 {{ $user->userProfile->aboutself }}
                             </p>

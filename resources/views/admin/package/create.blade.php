@@ -1,14 +1,13 @@
 <x-app-layout>
-    @if (session('message'))
-        <p class="bg-green-400 text-veryDarkBlue text-md">{{ session('message') }}</p>
-    @endif
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
         </x-slot>
-
+        <div class="w-full mx-auto text-lg text-center font-bold m-4">
+            <h2>Add New Package</h2>
+        </div>
         <form method="POST" action="{{ route('create.package') }}">
             @csrf
             <!-- Name -->

@@ -80,7 +80,7 @@ class BookingController extends Controller
 
     public function showUserBookings() 
     {
-        $bookings = Booking::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
+        $bookings = Booking::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->paginate(10);
         
         return view('bookings.showUserBookings', [
             'bookings' => $bookings
@@ -126,6 +126,47 @@ class BookingController extends Controller
         return view('admin.bookings.showbooking', [
             'booking' =>  $booking,
          ]) ;
+    }
+
+    public function edit($id)
+    {
+        $booking = Booking::findOrFail($id);
+
+        return view('admin.bookings.edit', [
+            'booking' => $booking,
+            'packages' => Package::all(),
+            'photographers' => User::whereRoleIs('photographer')->get(),
+
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $attributes = $request->validate([
+            'user_id' => ['required', 'integer'],
+            'package' => 'required',
+            'event_address' => ['required', 'string', 'max:1000'],
+            'event_date' => ['required', 'date'],
+            'event_time' => ['required', ],
+            'photographer' => 'required',
+            'active_phone_no' => ['required', 'digits:11'], 
+            'status' => ['required', 'string']
+        ]);
+
+        $booking = Booking::findOrFail($id);
+
+        $booking->update($attributes);
+
+        return redirect()->back()->with("message", "Booking was updated successfully!!");
+
+    }
+
+    public function destroy($id)
+    {
+        $booking = Booking::findOrFail($id);
+        $booking->delete();
+
+        return redirect()->back()->with("message", "Booking was deleted successfully!");
     }
 
 }

@@ -5,10 +5,11 @@
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
         </x-slot>
-
-        <form method="POST" action="{{ route('create.user') }}">
+        <div class="w-full mx-auto text-lg text-center font-bold m-4">
+            <h2>Add New Client</h2>
+        </div>
+        <form method="POST" action="{{ route('store.client') }}">
             @csrf
-
             <!-- Name -->
             <div>
                 <x-input-label for="username" :value="__('User Name')" />
@@ -17,7 +18,6 @@
 
                 <x-input-error :messages="$errors->get('username')" class="mt-2" />
             </div>
-
             <!-- Email Address -->
             <div class="mt-4">
                 <x-input-label for="email" :value="__('Email')" />
@@ -26,7 +26,6 @@
 
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
-
             <!-- Password -->
             <div class="mt-4">
                 <x-input-label for="password" :value="__('Password')" />
@@ -38,7 +37,6 @@
 
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
-
             <!-- Confirm Password -->
             <div class="mt-4">
                 <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
@@ -48,18 +46,6 @@
                                 name="password_confirmation" required />
 
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-            </div>
-            <!-- Role -->
-            <div class="mt-4">
-                <x-input-label for="role" class="px-2 py-2 font-semibold" :value="__('Role')" />
-            </div>
-            <div class="mt-4">
-                <select name="role" id="role" value="{{old('role')}}" class ="text-sm block mt-1 w-full border-dgrey focus:border-indigo-300 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" required>
-                    <option value="" selected disabled>Select role..</option>
-                    @foreach($roles as $role)
-                    <option value="{{ $role->id}}">{{ $role->name}}</option>
-                    @endforeach
-                </select>   
             </div>
             <!--terms and conditions-->
             <div class="mt-4">
@@ -73,10 +59,6 @@
                 <x-input-error :messages="$errors->get('terms_conditions')" class="mt-2" />
             </div>
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
                 <x-primary-button class="ml-4">
                     {{ __('Register') }}
                 </x-primary-button>

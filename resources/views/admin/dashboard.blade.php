@@ -161,7 +161,7 @@
                                 TOP PHOTOGRAPHER
                             </div>
                             <div class="w-full text-md font-semibold text-center text-ellipsis overflow-hidden">
-                                {{ $top_photographer->userProfile->firstname . ' ' .  $top_photographer->userProfile->lastname }}
+                                {{ $top_photographer->userProfile->firstname . ' ' .  $top_photographer->userProfile->lastname }} 
                             </div>
                         </div>
                         <div class="flex flex-col bg-gray-50 p-8 border border-2 border-slate-200 shadow-lg my-3 md:w-1/3">
@@ -169,7 +169,9 @@
                                 TOP PACKAGE
                             </div>
                             <div class="w-full text-md font-semibold text-center text-ellipsis overflow-hidden">
+                                @isset($top_package->name)
                                 {{ $top_package->name}}
+                                @endisset
                             </div>
                         </div>
                     </div>    

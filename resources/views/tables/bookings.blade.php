@@ -1,6 +1,6 @@
 <section class="mt-2">
     <div class="overflow-x-auto relative">
-        <table class="table-auto mx-auto text-sm text-center border">
+        <table class="w-full table-auto mx-auto text-sm text-center border">
             <thead class="text-xs text-white uppercase bg-veryDarkBlue">
                 <tr>
                     <th scope="col" class="py-3 px-4">
@@ -53,10 +53,17 @@
                     <td class="text-center py-2 px-4 whitespace-nowrap">
                         {{$booking->status}}
                     </td>
-                    <td class="text-center py-2 px-4 whitespace-nowrap">
-                        <a href="/booking/{{$booking->id}}" class="bg-indigo-500 text-white rounded-md py-1 px-4">View</a>
-                        <a href="#" class="bg-green-500 text-white rounded-md py-1 px-4">Edit</a>
-                        <a href="#" class="bg-red-500 text-white rounded-md py-1 px-4">Delete</a>
+                    <td class="flex flex-row justify-around text-center py-2 px-4 whitespace-nowrap">
+                        <a href="{{ route('booking.show', $booking->id) }}" class="bg-indigo-500 text-white rounded-md py-1 px-4">View</a>
+                        <a href="{{ route('booking.edit', $booking->id) }}" class="bg-green-500 text-white rounded-md py-1 px-4">Edit</a>
+                        <form method="POST" action="{{ route('booking.delete', $booking->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" id="booking_id" name="booking_id" value="{{$booking->id}}">
+                            <button class="bg-red-500 text-white rounded-md py-1 px-4">
+                                {{ __('Delete') }}
+                            <button>
+                        </form> 
                     </td>
                 </tr>
                 @endforeach
