@@ -14,7 +14,7 @@
             <div class="mt-4">
                 <x-input-label for="name" :value="__('Name')" />
 
-                <x-text-input id="name" class="block mt-1 w-full" type="name" name="name" :value="old('name')" required />
+                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required />
 
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
@@ -23,7 +23,7 @@
             <!-- Description -->
             <div class="mt-4">
                 <x-input-label for="description" :value="__('Description')" />
-                <textarea id="description" name="description" rows="4" cols="25" value="old('description')" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                <textarea id="description" name="description" rows="4" cols="25" value="old('description')" class="w-full rounded-md shadow-sm border-gray-300 mt-1 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                 </textarea>
                 <x-input-error :messages="$errors->get('title')" class="mt-2" />
             </div>

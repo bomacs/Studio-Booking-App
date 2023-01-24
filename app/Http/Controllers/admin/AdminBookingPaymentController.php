@@ -67,6 +67,8 @@ class AdminBookingPaymentController extends Controller
         $payment = Payment::findOrFail($id);
         $payment->delete();
 
+        $payment->booking->delete();
+
         return redirect()->back()->with("message", "Payment was deleted successfully!");
     }
 

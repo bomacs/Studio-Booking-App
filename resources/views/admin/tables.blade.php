@@ -30,26 +30,26 @@
                 </button>
             </div>
             <!-- sidebar -->
-            <div :class="{'block': open, '-translate-x-full': ! open}" class="w-60 shadow-md bg-red-100 space-y-6 py-7 px-2 absolute inset-y-0 left-0 -translate-x-full transition duration-200 ease-in-out md:relative md:translate-x-0">
+            <div :class="{'block': open, '-translate-x-full': ! open}" class="w-60 shadow-md bg-red-100 space-y-6 py-7 px-2 absolute inset-y-0 left-0 z-10 -translate-x-full transition duration-200 ease-in-out md:relative md:translate-x-0">
                 <div class="w-full px-8">
                     <x-application-logo/>
                 </div>
                 <nav>
                     <ul class="relative px-2">
                         <li class="relative">
-                            <a href="{{route('home')}}" class="flex items-center text-sm py-4 px-8 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"  data-mdb-ripple="true" data-mdb-ripple-color="dark">
-                            <span>Home</span>
-                            </a>
+                            <x-admin-menu :href="route('home')" :active="request()->routeIs('home')">
+                            Home
+                            </x-admin-menu>
                         </li>
                         <li class="relative">
-                            <a href="{{route('admin.dashboard')}}" class="flex items-center text-sm py-4 px-8 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark">
-                            <span>DashBoard</span>
-                            </a>
+                            <x-admin-menu :href="route('admin.dashboard')" data-mdb-ripple="true" data-mdb-ripple-color="dark" :active="request()->routeIs('admin.dashboard')">
+                            DashBoard
+                            </x-admin-menu>
                         </li>
                         <li class="relative">
-                            <a href="{{route('tables')}}" class="flex items-center text-sm py-4 px-8 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark">
-                            <span>Tables</span>
-                            </a>
+                            <x-admin-menu :href="route('tables')" data-mdb-ripple="true" data-mdb-ripple-color="dark" :active="request()->routeIs('tables')">
+                            Tables
+                            </x-admin-menu>
                         </li>
                         <li class="relative">
                             <p class="uppercase font-bold text-eryDarkBlue flex items-center text-sm pt-4 px-8 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap" data-mdb-ripple="true" data-mdb-ripple-color="dark">Account</p>
@@ -95,7 +95,7 @@
                           <p>{{ session('message') }}</p>
                       </div>
                       @endif
-                    <div class="container px-12">
+                    <div class="container mx-auto">
                         <div class="mt-10">
                             <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
                                 {{ __('Bookings') }}
@@ -131,6 +131,24 @@
                                 {{ __('Packages') }}
                             </h4>
                             @include('tables.packages')
+                        </div>
+                        <div class="mt-24">
+                            <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
+                                {{ __('Testimonials') }}
+                            </h4>
+                            @include('tables.comments')
+                        </div>
+                        <div class="mt-24">
+                            <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
+                                {{ __('Images') }}
+                            </h4>
+                            @include('tables.images')
+                        </div>
+                        <div class="mt-24">
+                            <h4 class="text-left font-semibold text-xl text-darkGrayishBlue leading-tight">
+                                {{ __('Videos') }}
+                            </h4>
+                            @include('tables.videos')
                         </div>
                     </div>
                 </main>

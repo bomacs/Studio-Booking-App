@@ -1,10 +1,9 @@
-
 <div class="container grid grid-cols-1 gap-2 mt-20 mx-auto px-2 md:grid-cols-3">
     @foreach ($packages as $package)  
-    <div class="max-w-md rounded-lg shadow-md shadow-brightRedLight p-8">
-        <h4 class="text-2xl font-semibold text-center text-veryDarkBlue py-4"> {{ $package->name }} </h4>
+    <div class="w-full h-full rounded-lg shadow-md shadow-brightRedLight p-8 bg-no-repeat bg-cover" style="background-image: {{ asset('imgs/packages/birthday.jpg') }};">
+        <h4 class="text-lg font-semibold text-center text-veryDarkBlue py-4 md:text-2xl"> {{ $package->name }} </h4>
         <hr>
-        <h5 class="text-2xl text-center font-bold py-4 text-gray-500">Php {{ $package->price }}</h5>
+        <h5 class="text-lg text-center font-bold py-4 text-gray-500 md:text-2xl">Php {{ $package->price }}</h5>
         <hr>
         @foreach ($package->includes as $include)
         <div class="text-xs my-4 flex flex-col items-center space-y-8">
@@ -17,8 +16,8 @@
         <a href="user/package/{{$package->id}}/book" class="font-semibold my-4 px-4 py-4 block w-full text-white bg-brightRed hover:bg-brightRedSupLight rounded"> Select </a>
     </div>
     @endforeach
-    <div class="text-xs mt-2">
-        {{ $packages->links() }}
-    </div>
+</div>
+<div class="font-semibold text-indigo-400 text-xs text-end mt-2 px-2.5 hover:text-indigo-900 md:text-sm md:mr-20">
+    <a href="{{ route('package.index') }}">View More..</a>
 </div>
 

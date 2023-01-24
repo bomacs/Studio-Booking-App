@@ -22,7 +22,7 @@
                 {{ __('Dashboard') }}
             </x-nav-link>
         </div>
-        <!-- side dropdown menu -->
+        <!-- side dropdown menu --> 
         @if (Route::has('login'))
             <div class="hidden items-center space-x-4 sm:block md:flex">
                 @auth

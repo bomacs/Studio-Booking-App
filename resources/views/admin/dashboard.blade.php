@@ -37,19 +37,19 @@
                 <nav>
                     <ul class="relative px-2">
                         <li class="relative">
-                            <a href="{{route('home')}}" class="flex items-center text-sm py-4 px-8 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"  data-mdb-ripple="true" data-mdb-ripple-color="dark">
-                            <span>Home</span>
-                            </a>
+                            <x-admin-menu :href="route('home')" :active="request()->routeIs('home')">
+                            Home
+                            </x-admin-menu>
                         </li>
                         <li class="relative">
-                            <a href="{{route('admin.dashboard')}}" class="flex items-center text-sm py-4 px-8 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark">
-                            <span>DashBoard</span>
-                            </a>
+                            <x-admin-menu :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                            DashBoard
+                            </x-admin-menu>
                         </li>
                         <li class="relative">
-                            <a href="{{ route('tables') }}" class="flex items-center text-sm py-4 px-8 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="dark">
-                            <span>Tables</span>
-                            </a>
+                            <x-admin-menu :href="route('tables')" :active="request()->routeIs('tables')">
+                            Tables
+                            </x-admin-menu>
                         </li>
                         <li class="relative">
                             <p class="uppercase font-bold text-eryDarkBlue flex items-center text-sm pt-4 px-8 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap" data-mdb-ripple="true" data-mdb-ripple-color="dark">Account</p>

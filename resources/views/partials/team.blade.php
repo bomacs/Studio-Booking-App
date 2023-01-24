@@ -17,7 +17,7 @@
         </div>
     </div>
     @endforeach
-    <div class="text-xs mt-2">
-        {{ $photographers->links() }}
-    </div>
+</div>
+<div class="font-semibold text-indigo-400 text-xs text-end mt-2 px-2.5 hover:text-indigo-900 md:text-sm md:mr-20">
+    <a href="{{ route('photographer.index') }}">View More..</a>
 </div>

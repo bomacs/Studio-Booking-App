@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
 
         if(Auth::user()->hasRole('user'))
         {
-            return redirect()->intended('/user/dashboard');
+            return redirect()->intended('/');
 
         }elseif (Auth::user()->hasRole('photographer')) 
         {

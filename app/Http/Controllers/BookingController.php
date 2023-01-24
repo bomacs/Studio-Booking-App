@@ -7,6 +7,7 @@ use App\Models\Booking;
 use App\Models\Package;
 use Illuminate\Http\Request;
 use App\Events\NewBookingPlaced;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewBookingReceived;
 use Illuminate\Support\Facades\Notification;
@@ -165,6 +166,9 @@ class BookingController extends Controller
     {
         $booking = Booking::findOrFail($id);
         $booking->delete();
+
+        $booking->payment->delete();
+
 
         return redirect()->back()->with("message", "Booking was deleted successfully!");
     }

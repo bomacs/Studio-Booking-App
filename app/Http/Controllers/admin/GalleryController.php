@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class GalleryController extends Controller
 {
+
+    /*--Show images in gallery--*/
+    public function index()
+    {
+        return view('images.index', [
+            'galleryImages' => Gallery::all(),
+        ]);
+    }
+
     public function create()
     {
         return view('gallery.create');
